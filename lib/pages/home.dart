@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      //extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -17,7 +18,7 @@ class Home extends StatelessWidget {
         centerTitle: true,
         title: const Text(
           'Task Manager',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontSize: 15.0),
         ),
         leading: InkWell(
           highlightColor: Colors.amber,
@@ -54,13 +55,58 @@ class Home extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          Row(
-            //TODO a safe area must be declared in order to specify start of the body
-            children: [Text('welcome back!')],
-          )
-        ],
+      body: Padding(
+        padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 12.0),
+        child: Column(
+          children: <Widget>[
+            Row(
+              children: [
+                RichText(
+                  maxLines: 2,
+                  text: const TextSpan(
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                    children: [
+                      TextSpan(
+                          text: 'Welcome Back!\n',
+                          style: TextStyle(height: 1.5)),
+                      TextSpan(
+                        text: "Here's Update Today.",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Spacer(),
+                GestureDetector(
+                  onTap: () {
+                    //TODO
+                  },
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: const <Widget>[
+                      Icon(
+                        Icons.circle_rounded,
+                        color: Colors.black87,
+                        size: 55,
+                      ),
+                      Icon(
+                        FontAwesomeIcons.magnifyingGlass,
+                        color: Colors.white,
+                        size: 19.0,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Row()
+          ],
+        ),
       ),
     );
   }
