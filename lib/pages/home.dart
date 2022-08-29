@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import './segmentedControl.dart';
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -21,7 +21,7 @@ class Home extends StatelessWidget {
           style: TextStyle(color: Colors.black, fontSize: 15.0),
         ),
         leading: InkWell(
-          highlightColor: Colors.amber,
+          highlightColor: Colors.amber, // donno what this color is for
           //splashColor: Colors.green,
           child: GestureDetector(
             onTap: () {
@@ -56,35 +56,39 @@ class Home extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.only(left: 12.0, right: 12.0, top: 12.0),
+        padding: const EdgeInsets.only(top: 12.0),
         child: Column(
           children: <Widget>[
             Row(
               children: [
-                RichText(
-                  maxLines: 2,
-                  text: const TextSpan(
-                    style: TextStyle(
-                      color: Colors.black,
-                    ),
-                    children: [
-                      TextSpan(
-                          text: 'Welcome Back!\n',
-                          style: TextStyle(height: 1.5)),
-                      TextSpan(
-                        text: "Here's Update Today.",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22.0,
-                        ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 12),
+                  child: RichText(
+                    maxLines: 2,
+                    text: const TextSpan(
+                      style: TextStyle(
+                        color: Colors.black,
+                        
                       ),
-                    ],
+                      children: [
+                        TextSpan(
+                            text: 'Welcome Back!\n',
+                            style: TextStyle(height: 1.5)),
+                        TextSpan(
+                          text: "Here's Update Today.",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22.0,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Spacer(),
                 GestureDetector(
                   onTap: () {
-                    //TODO
+                    //TODO search
                   },
                   child: Stack(
                     alignment: Alignment.center,
@@ -104,7 +108,8 @@ class Home extends StatelessWidget {
                 ),
               ],
             ),
-            Row()
+            
+            const SegmentedControl()
           ],
         ),
       ),
