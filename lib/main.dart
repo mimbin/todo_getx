@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import './pages/home.dart';
 
 void main() {
@@ -10,10 +11,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Home(),
-      title: 'Task Manager',
-      debugShowCheckedModeBanner: false,
+    return ScreenUtilInit(
+      designSize: const Size(360, 640),
+      minTextAdapt: true,
+      builder: (context, child) {
+        return const MaterialApp(
+          home: Home(),
+          title: 'Task Manager',
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 }
