@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -59,79 +60,101 @@ class Home extends StatelessWidget {
           )
         ],
       ),
-      body: Padding(
-        padding: EdgeInsets.only(top: 12.0.sp, left: 12.sp, right: 12.sp),
-        child: Column(
-          children: <Widget>[
-            Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 12.sp),
-                  child: RichText(
-                    maxLines: 2,
-                    text: TextSpan(
-                      style: const TextStyle(
-                        color: Colors.black,
-                      ),
-                      children: [
-                        TextSpan(
-                            text: 'Welcome Back!\n',
-                            style: TextStyle(height: 1.5.sp)),
-                        TextSpan(
-                          text: "Here's Update Today.",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22.0.sp,
+      body: Container(
+        foregroundDecoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.white, Colors.transparent],
+            begin: Alignment.bottomCenter,
+            end: Alignment(0, 0.2),
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.only(top: 12.0.sp, left: 12.sp, right: 12.sp),
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 12.sp),
+                    child: RichText(
+                      maxLines: 2,
+                      text: TextSpan(
+                        style: const TextStyle(
+                          color: Colors.black,
+                        ),
+                        children: [
+                          TextSpan(
+                              text: 'Welcome Back!\n',
+                              style: TextStyle(height: 1.5.sp)),
+                          TextSpan(
+                            text: "Here's Update Today.",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 22.0.sp,
+                            ),
                           ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Spacer(),
+                  GestureDetector(
+                    onTap: () {
+                      //TODO search icon functionality
+                    },
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: <Widget>[
+                        Icon(
+                          Icons.circle_rounded,
+                          color: Colors.black87,
+                          size: 55.sp,
+                        ),
+                        Icon(
+                          FontAwesomeIcons.magnifyingGlass,
+                          color: Colors.white,
+                          size: 19.0.sp,
                         ),
                       ],
                     ),
                   ),
-                ),
-                Spacer(),
-                GestureDetector(
-                  onTap: () {
-                    //TODO search icon functionality
-                  },
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: <Widget>[
-                      Icon(
-                        Icons.circle_rounded,
-                        color: Colors.black87,
-                        size: 55.sp,
-                      ),
-                      Icon(
-                        FontAwesomeIcons.magnifyingGlass,
-                        color: Colors.white,
-                        size: 19.0.sp,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            const SegmentedControl(),
-            SizedBox(
-              height: 30.h,
-            ),
-            Expanded(
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  MyCard(),
-                  MyCard(),
-                  MyCard(),
-                  MyCard(),
-                  MyCard(),
-                  MyCard(),
-                  
                 ],
               ),
-            ),
-          ],
+              const SegmentedControl(),
+              SizedBox(
+                height: 30.h,
+              ),
+              Expanded(
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    MyCard(),
+                    MyCard(),
+                    MyCard(),
+                    MyCard(),
+                    MyCard(),
+                    MyCard(),
+                  ],
+                ),
+              ),
+              
+            ],
+
+          ),
+          
         ),
+        
       ),
+
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+          isExtended: true,
+          elevation: 2,
+          icon: const Icon(IconlyBold.plus),
+          backgroundColor: Colors.black,
+          extendedPadding: EdgeInsets.symmetric(horizontal: 20.sp),
+          onPressed: () {},
+          label: (const Text('Add Task'))),
     );
   }
 }

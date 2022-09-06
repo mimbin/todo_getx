@@ -16,9 +16,11 @@ class MyCard extends StatelessWidget {
       minTextAdapt: true,
       builder: (context, child) {
         return Container(
+          
           margin: const EdgeInsets.only(bottom: 20),
           height: 200.sp,
           decoration: const BoxDecoration(
+            
             borderRadius: BorderRadius.all(Radius.circular(20)),
             color: Colors.cyan, //TODO this must be dynamic for each card
           ),
@@ -33,7 +35,7 @@ class MyCard extends StatelessWidget {
                   children: [
                     SizedBox(
                       height: 50.sp,
-                      width: 255.w,
+                      width: 0.72.sw,
                       child: ListView(
                         shrinkWrap: true,
                         physics: const BouncingScrollPhysics(),
@@ -117,7 +119,7 @@ class MyCard extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 8.sp,
+                      width: 12.sp,
                     ),
                     Icon(
                       IconlyBold.editSquare,
